@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imrokraft.todo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="20" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_todo"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".RegisterMenuActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".TaskAddActivity"
+            android:label="@string/title_activity_new_task" >
+        </activity>
+        <activity
+            android:name=".TaskEditActivity"
+            android:label="@string/title_activity_edit_task" >
+        </activity>
+        <activity
+            android:name=".TaskViewActivity"
+            android:label="@string/title_activity_view_task" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".UserManagementActivity"
+            android:label="@string/title_activity_user" >
+        </activity>
+        <activity
+            android:name=".TaskAssignActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".TaskNewAssignActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".CameraActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity android:name=".BackupActivity" />
+        <activity android:name=".RestoreActivity" />
+        <activity android:name=".AlarmCreateViewActivity" />
+        <activity android:name=".AlarmListActivity" />
+
+        <service
+            android:name=".AlarmService"
+            android:enabled="true" />
+
+        <receiver android:name=".AlarmManagerHelper" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

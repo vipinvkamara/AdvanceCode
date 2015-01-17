@@ -1,0 +1,38 @@
+package com.example.chatapp;
+
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.ListView;
+
+import com.imrokraft.arrayadapterexample.UserAdapter;
+
+public class MainActivity extends ActionBarActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		ListView myListView = (ListView) findViewById(R.id.my_main_listview);
+
+
+		UserAdapter myUserAdapter=new UserAdapter(getApplicationContext(), createDummyUserModels());
+
+
+		myListView.setAdapter(myUserAdapter);
+
+	}
+
+	public com.imrokraft.arrayadapterexample.UserModel[] createDummyUserModels(){
+
+		String[] names={"anand","senthil","vipin","praveen","kiran","anoop","vipin","praveen","kiran","anoop"};
+		String[] emails={"anandab@gmail.com","senthiljs@gmail.com","vipinkamara@gmail.com","praveen@gmail.com","kiran@gmail.com", "anoop@gmail.com","vipinkamara@gmail.com","praveen@gmail.com","kiran@gmail.com", "anoop@gmail.com"};
+		com.imrokraft.arrayadapterexample.UserModel[] userlist=new UserModel[names.length];
+		for (int i = 0; i < emails.length; i++) {
+			userlist[i]=new UserModel(names[i],emails[i]);
+		}
+		return userlist;
+	}
+}
+
+

@@ -1,0 +1,9 @@
+  <string-array name="myarray">
+        <item>Dream</item>
+        <item>Dream</item>
+        <item>Dream</item>
+        <item>Dream</item>
+        <item>Dream</item>
+    </string-array>
+
+</resources>

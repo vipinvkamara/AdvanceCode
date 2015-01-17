@@ -1,0 +1,39 @@
+package com.vipin.reistration;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+
+public class MainActivity extends ActionBarActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.second);
+	}
+	public  void  onSign(View v) {
+		TxtOk=true;
+
+		EditText e=((EditText)findViewById(R.id.editText1));
+		String username_entered=e.getText().toString();
+		EditText p=((EditText)findViewById(R.id.editText2));
+		String password_entered=e.getText().toString();
+		Button b=(Button)findViewById(R.id.button1);
+
+
+		if(username_entered.contains("")){
+			e.setError("User Name");
+			TxtOk=false;
+			return;
+		}
+		if(password_entered.contains("")){
+			p.setError("Password");
+			TxtOk=false;
+			return;
+		}
+	}
+}
+

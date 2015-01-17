@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bluetooth Example</string>
+   
+    
+    <string name="action_settings">Settings</string>
+    <string name="action_turn_on">Turn On/Off Bluetooth</string>
+    <string name="action_scan_devices">Scan for New Devices</string>
+    <string name="action_list_pired_devices">List Paired Devices</string>
+
+</resources>

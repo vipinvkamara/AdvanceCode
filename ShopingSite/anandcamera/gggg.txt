@@ -1,0 +1,31 @@
+if(registrationOk){
+			SharedPreferences sp=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+			Editor ed=sp.edit();
+			ed.putString("username", username_entered);
+			ed.putString("password", password_entered);
+			ed.putString("name", name_entered);
+			ed.putString("email", email_entered);
+			ed.putLong("phone", Long.parseLong(phone_entered));
+			ed.putBoolean("login_status", false);
+
+			String currentuservalues=username_entered+","+password_entered+","+name_entered+","+username_entered+","+email_entered+","+phone_entered;
+
+			if(! sp.getString("previous_registrations", "").equals("")){
+				//already some registered
+				currentuservalues=sp.getString("previous_registrations", "") + "|" +currentuservalues;
+			}
+			ed.putString("previous_registrations", currentuservalues);
+			ed.commit();
+
+
+
+			Toast.makeText(getApplicationContext(), "Registered Succesfully. \n Please login to continue", Toast.LENGTH_LONG).show();
+
+
+
+			System.out.println("----------------------------------------\n"+sp.getString("previous_registrations", "ONNNUM ILLA")+"\n-------------------------------------------------");
+
+		}
+
+	}
+}

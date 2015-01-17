@@ -1,0 +1,84 @@
+package com.example.chatapp;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+	String myMessage;
+
+	EditText message;
+	TextView txtMessageReceived;
+
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		txtMessageReceived=((TextView)findViewById(R.id.textView1));
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					ServerSocket myServerSocket=new ServerSocket(8888);  
+					System.out.println("Still Waiting for a connection");
+					Socket mySocket=myServerSocket.accept();	
+					System.out.println("connected succesfully");
+					InputStream ins=mySocket.getInputStream();
+					String s="";
+					byte[] b=new byte[10];
+
+					while(ins.read(b)>0){
+						s=s+(new String(b));
+						b=new byte[10];
+					}
+					mySocket.close();
+					myServerSocket.close();
+					txtMessageReceived.setText("Message is:: \n"+myMessage);
+					System.out.println(myMessage);
+					System.out.println("Finished Receiving Successfully");
+				}catch(Exception e){
+
+				}
+
+			}
+		}).start();
+
+
+
+	}
+	public  void  onSentButtonClicked(View v) {
+		try {
+			message=(EditText)findViewById(R.id.editText);
+			myMessage=message.getText().toString();
+
+			Socket s=new Socket("localhost", 8888);
+			//Socket s=new Socket("111.92.19.74", 8888);
+			Toast.makeText(this,"Data sent succesfully", Toast.LENGTH_LONG).show();
+
+			OutputStream os=s.getOutputStream();
+
+
+			os.write(myMessage.getBytes());
+			os.flush();
+			os.close();
+			s.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+
+
