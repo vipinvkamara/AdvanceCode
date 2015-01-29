@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
-	String myMessage;
+	String myMessageToSend;
+	String myReceivedMessage;
+
 	TextView txtMessageReceived;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +45,15 @@ public class MainActivity extends ActionBarActivity {
 							s=s+(new String(b));
 							b=new byte[10];
 						}
+						myReceivedMessage=s;
 						mySocket.close();
 						runOnUiThread(new Runnable() {
 							public void run() {
-								txtMessageReceived.setText(txtMessageReceived.getText().toString()+"\n"+myMessage);
+								txtMessageReceived.setText(txtMessageReceived.getText().toString()+"\n"+myReceivedMessage);
 
 							}
 						});
-						System.out.println(myMessage);
+						System.out.println(myReceivedMessage);
 						System.out.println("Finished Receiving Successfully");
 						myServerSocket.close();
 					}
@@ -67,8 +70,9 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 	public  void  onSentButtonClicked(View v) {
-		myMessage=((EditText)findViewById(R.id.editText)).getText().toString();
-		((EditText)findViewById(R.id.editText)).setText("");
+		myMessageToSend=((EditText)findViewById(R.id.editText)).getText().toString();
+		EditText ip=((EditText)findViewById(R.id.ipTxt));
+		//((EditText)findViewById(R.id.editText)).setText("");
 		System.out.println("new Message");
 		new Thread(new Runnable() {
 
@@ -76,10 +80,11 @@ public class MainActivity extends ActionBarActivity {
 			public void run() {
 				try {
 					System.out.println("Sending new");
-					Socket s=new Socket("192.168.1.4", 8888);
+					Socket s=new Socket("ip", 8888);
 					//Socket s=new Socket("localhost", 8888);
+					//Socket s=new Socket("192.168.56.101", 8888);
 					OutputStream os=s.getOutputStream();
-					os.write(myMessage.getBytes());
+					os.write(myMessageToSend.getBytes());
 					os.flush();
 					os.close();
 					s.close();

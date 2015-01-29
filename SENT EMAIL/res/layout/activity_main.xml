@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.demo.MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="SENT THE EMAIL"
+        android:textColor="#00FF00"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Enter the Message" />
+
+    <EditText
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/message"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="subject" />
+
+    <EditText
+        android:id="@+id/reciptent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/subject"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="26dp"
+        android:ems="10"
+        android:hint="Reciptent" />
+
+    <Button
+        android:id="@+id/sent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/message"
+        android:layout_marginTop="39dp"
+        android:background="#c1ddff"
+        android:text="SENT"
+        android:textColor="#cfff00"
+        android:textSize="20sp" />
+
+</RelativeLayout>

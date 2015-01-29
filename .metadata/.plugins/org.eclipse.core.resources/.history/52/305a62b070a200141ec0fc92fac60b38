@@ -1,0 +1,41 @@
+package com.example.smsapp;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.telephony.gsm.SmsManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+	EditText phno;
+	EditText message;
+	Button send;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		phno=(EditText)findViewById(R.id.phoneNumber);
+		message=(EditText)findViewById(R.id.Message);
+		send=(Button)findViewById(R.id.sent);
+
+		String phoneNumber=phno.getText().toString();
+		String messagecondent=message.getText().toString();
+
+		try {
+			SmsManager smsManager=SmsManager.getDefault();
+			smsManager.sendTextMessage(phoneNumber, null, messagecondent, null, null);
+			//smsManager.sendTextMessage(destinationAddress, scAddress, text, sentIntent, deliveryIntent);
+			Toast.makeText(getApplicationContext(), "message is send", Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Toast.makeText(getApplicationContext(), "message Failed", Toast.LENGTH_SHORT).show();
+
+			e.printStackTrace();
+		}
+
+	}
+
+
+}

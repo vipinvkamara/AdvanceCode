@@ -1,0 +1,17 @@
+package com.example.dialogcreation;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.Button;
+
+public class MainActivity extends ActionBarActivity {
+	private  Button buttonshow;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		setContentView(R.layout.activity_main);
+
+	}
+
+
+}

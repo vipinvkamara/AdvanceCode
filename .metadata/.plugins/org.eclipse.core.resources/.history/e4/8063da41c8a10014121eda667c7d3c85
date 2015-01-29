@@ -1,0 +1,31 @@
+package com.example.smsapp;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.telephony.gsm.SmsManager;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends ActionBarActivity {
+	EditText phno;
+	EditText message;
+	Button send;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		phno=(EditText)findViewById(R.id.phoneNumber);
+		message=(EditText)findViewById(R.id.Message);
+		send=(Button)findViewById(R.id.sent);
+		
+		String phoneNumber=phno.getText().toString();
+		String messagecondent=message.getText().toString();
+		SmsManager smsManager=SmsManager.getDefault();
+		smsManager.sendTextMessage(phoneNumber, null, messagecondent, null, null);
+
+
+	}
+
+
+}
